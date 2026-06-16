@@ -146,6 +146,6 @@ SDTM domains (QS, VS, FA, …) · CDASH eCRF conventions · ADaM analysis-ready 
 
 ---
 
-*Tamer Chowdhury · Chair, ACDM Data Management Technology Expert Group (DMTEG)*
+*Tamer Chowdhury*
 
 *Walk one assessment. Map it once. Automate everything downstream.*
