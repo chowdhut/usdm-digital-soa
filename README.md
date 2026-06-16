@@ -2,6 +2,8 @@
 
 ### Digital SoA, mapped end to end. One assessment — the 6-Minute Walk Test — traced from a sentence in the protocol to the sixteen USDM v4 tables that make a protocol machine-readable.
 
+*A walk-through and reference for clinical data managers.*
+
 ---
 
 ## What this is
@@ -133,235 +135,235 @@ SDTM domains (QS, VS, FA, …) · CDASH eCRF conventions · ADaM analysis-ready 
 Below, each class is expandable. For every class you'll see its key attributes (exact USDM v4 names), what each one holds, and the value it carries in our 6MWT example. `*Id` / `*Ids` attributes are foreign keys into another sheet. Each class has additional attributes in the full USDM v4 model — see the [interactive class browser](https://ankonyeni.github.io/usdm-v4-docs/diagram-viewer/) for the complete list.
 
 <details>
-<summary><b>study</b> &nbsp;·&nbsp; Study &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | STD-1111-0000 |
-| `name` | short study name | Study 1111_0000 |
-| `versions` | child StudyVersion ids | [SV-1111-0000-1] |
-| `instanceType` | the class name | Study |
-
+<summary><b>study</b> &nbsp;&middot;&nbsp; Study &nbsp;&middot;&nbsp; <i>7 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>STD-1111-0000</td></tr>
+<tr><td><code>name</code></td><td>short study name</td><td>Study 1111_0000</td></tr>
+<tr><td><code>versions</code></td><td>child StudyVersion ids</td><td>[SV-1111-0000-1]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>Study</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>study_version</b> &nbsp;·&nbsp; StudyVersion &nbsp;·&nbsp; <i>28 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | SV-1111-0000-1 |
-| `versionIdentifier` | version label | 1 |
-| `rationale` | why this version exists | Original protocol |
-| `studyDesigns` | child StudyDesign ids | [SD-1111-0000] |
-| `amendments` | child StudyAmendment ids | [AMD-0] |
-| `biomedicalConcepts` | BC ids defined for the study | [BC-6MWT] |
-| `bcCategories` | BC category ids | [BCC-QRS] |
-| `instanceType` | the class name | StudyVersion |
-
+<summary><b>study_version</b> &nbsp;&middot;&nbsp; StudyVersion &nbsp;&middot;&nbsp; <i>28 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>SV-1111-0000-1</td></tr>
+<tr><td><code>versionIdentifier</code></td><td>version label</td><td>1</td></tr>
+<tr><td><code>rationale</code></td><td>why this version exists</td><td>Original protocol</td></tr>
+<tr><td><code>studyDesigns</code></td><td>child StudyDesign ids</td><td>[SD-1111-0000]</td></tr>
+<tr><td><code>amendments</code></td><td>child StudyAmendment ids</td><td>[AMD-0]</td></tr>
+<tr><td><code>biomedicalConcepts</code></td><td>BC ids defined for the study</td><td>[BC-6MWT]</td></tr>
+<tr><td><code>bcCategories</code></td><td>BC category ids</td><td>[BCC-QRS]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>StudyVersion</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>study_amendment</b> &nbsp;·&nbsp; StudyAmendment &nbsp;·&nbsp; <i>17 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | AMD-0 |
-| `number` | amendment number | 0 |
-| `summary` | plain-language summary | Original protocol — no changes |
-| `instanceType` | the class name | StudyAmendment |
-
+<summary><b>study_amendment</b> &nbsp;&middot;&nbsp; StudyAmendment &nbsp;&middot;&nbsp; <i>17 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>AMD-0</td></tr>
+<tr><td><code>number</code></td><td>amendment number</td><td>0</td></tr>
+<tr><td><code>summary</code></td><td>plain-language summary</td><td>Original protocol — no changes</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>StudyAmendment</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>study_design</b> &nbsp;·&nbsp; StudyDesign &nbsp;·&nbsp; <i>28 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | SD-1111-0000 |
-| `name` | design name | Main Study Design |
-| `epochs` | child StudyEpoch ids | [EPO-TRT] |
-| `encounters` | child Encounter ids | [ENC-V1, ENC-V2, ENC-V3] |
-| `activities` | child Activity ids | [ACT-6MWT] |
-| `scheduleTimelines` | child ScheduleTimeline ids | [ST-MAIN] |
-| `instanceType` | the class name | StudyDesign |
-
+<summary><b>study_design</b> &nbsp;&middot;&nbsp; StudyDesign &nbsp;&middot;&nbsp; <i>28 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>SD-1111-0000</td></tr>
+<tr><td><code>name</code></td><td>design name</td><td>Main Study Design</td></tr>
+<tr><td><code>epochs</code></td><td>child StudyEpoch ids</td><td>[EPO-TRT]</td></tr>
+<tr><td><code>encounters</code></td><td>child Encounter ids</td><td>[ENC-V1, ENC-V2, ENC-V3]</td></tr>
+<tr><td><code>activities</code></td><td>child Activity ids</td><td>[ACT-6MWT]</td></tr>
+<tr><td><code>scheduleTimelines</code></td><td>child ScheduleTimeline ids</td><td>[ST-MAIN]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>StudyDesign</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>study_epoch</b> &nbsp;·&nbsp; StudyEpoch &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | EPO-TRT |
-| `name` | epoch name | Treatment |
-| `type` | epoch type (Code) | C-TREATMENT-EPOCH |
-| `instanceType` | the class name | StudyEpoch |
-
+<summary><b>study_epoch</b> &nbsp;&middot;&nbsp; StudyEpoch &nbsp;&middot;&nbsp; <i>10 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>EPO-TRT</td></tr>
+<tr><td><code>name</code></td><td>epoch name</td><td>Treatment</td></tr>
+<tr><td><code>type</code></td><td>epoch type (Code)</td><td>C-TREATMENT-EPOCH</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>StudyEpoch</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>encounter</b> &nbsp;·&nbsp; Encounter &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | ENC-V1  /  ENC-V2  /  ENC-V3 |
-| `name` | visit name | Visit 1  /  Visit 2  /  Visit 3 |
-| `type` | encounter type (Code) | C-SITE-VISIT |
-| `previousId / nextId` | order in the visit chain | links V1 → V2 → V3 |
-| `instanceType` | the class name | Encounter |
-
+<summary><b>encounter</b> &nbsp;&middot;&nbsp; Encounter &nbsp;&middot;&nbsp; <i>15 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>ENC-V1  /  ENC-V2  /  ENC-V3</td></tr>
+<tr><td><code>name</code></td><td>visit name</td><td>Visit 1  /  Visit 2  /  Visit 3</td></tr>
+<tr><td><code>type</code></td><td>encounter type (Code)</td><td>C-SITE-VISIT</td></tr>
+<tr><td><code>previousId / nextId</code></td><td>order in the visit chain</td><td>links V1 → V2 → V3</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>Encounter</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>biomedical_concept_category</b> &nbsp;·&nbsp; BiomedicalConceptCategory &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | BCC-QRS |
-| `name` | category name | Questionnaires, Ratings & Scales |
-| `code` | the category's Code id | → CDISC C100129 |
-| `memberIds` | BC ids that belong to it | [BC-6MWT] |
-| `instanceType` | the class name | BiomedicalConceptCategory |
-
+<summary><b>biomedical_concept_category</b> &nbsp;&middot;&nbsp; BiomedicalConceptCategory &nbsp;&middot;&nbsp; <i>10 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>BCC-QRS</td></tr>
+<tr><td><code>name</code></td><td>category name</td><td>Questionnaires, Ratings &amp; Scales</td></tr>
+<tr><td><code>code</code></td><td>the category's Code id</td><td>→ CDISC C100129</td></tr>
+<tr><td><code>memberIds</code></td><td>BC ids that belong to it</td><td>[BC-6MWT]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>BiomedicalConceptCategory</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>biomedical_concept</b> &nbsp;·&nbsp; BiomedicalConcept &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | BC-6MWT |
-| `name` | concept name | 6-Minute Walk Test |
-| `reference` | the anchoring code id | → LOINC 64098-7 |
-| `properties` | child BiomedicalConceptProperty ids | [BCP-DIST, BCP-UNIT, BCP-DATE, BCP-PERF] |
-| `code` | the concept's Code id | → CD-LP35-9 |
-| `instanceType` | the class name | BiomedicalConcept |
-
+<summary><b>biomedical_concept</b> &nbsp;&middot;&nbsp; BiomedicalConcept &nbsp;&middot;&nbsp; <i>10 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>BC-6MWT</td></tr>
+<tr><td><code>name</code></td><td>concept name</td><td>6-Minute Walk Test</td></tr>
+<tr><td><code>reference</code></td><td>the anchoring code id</td><td>→ LOINC 64098-7</td></tr>
+<tr><td><code>properties</code></td><td>child BiomedicalConceptProperty ids</td><td>[BCP-DIST, BCP-UNIT, BCP-DATE, BCP-PERF]</td></tr>
+<tr><td><code>code</code></td><td>the concept's Code id</td><td>→ CD-LP35-9</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>BiomedicalConcept</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>biomedical_concept_property</b> &nbsp;·&nbsp; BiomedicalConceptProperty &nbsp;·&nbsp; <i>11 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | BCP-DIST / BCP-UNIT / BCP-DATE / BCP-PERF |
-| `name` | what is recorded | Distance / Unit / Assessment Date / Performed? |
-| `datatype` | the value's type | decimal / code / date / code |
-| `responseCodes` | permitted ResponseCode ids | DIST: — · UNIT: [BRC-METER, BRC-FOOT] · DATE: — · PERF: [BRC-YES, BRC-NO] |
-| `isRequired` | must it be collected? | true (DIST, DATE, PERF) |
-| `instanceType` | the class name | BiomedicalConceptProperty |
-
+<summary><b>biomedical_concept_property</b> &nbsp;&middot;&nbsp; BiomedicalConceptProperty &nbsp;&middot;&nbsp; <i>11 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>BCP-DIST / BCP-UNIT / BCP-DATE / BCP-PERF</td></tr>
+<tr><td><code>name</code></td><td>what is recorded</td><td>Distance / Unit / Assessment Date / Performed?</td></tr>
+<tr><td><code>datatype</code></td><td>the value's type</td><td>decimal / code / date / code</td></tr>
+<tr><td><code>responseCodes</code></td><td>permitted ResponseCode ids</td><td>DIST: — · UNIT: [BRC-METER, BRC-FOOT] · DATE: — · PERF: [BRC-YES, BRC-NO]</td></tr>
+<tr><td><code>isRequired</code></td><td>must it be collected?</td><td>true (DIST, DATE, PERF)</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>BiomedicalConceptProperty</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>response_code</b> &nbsp;·&nbsp; ResponseCode &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | BRC-METER / BRC-FOOT / BRC-YES / BRC-NO |
-| `name` | display label | meter / foot / Yes / No |
-| `isEnabled` | is this option active? | true |
-| `code` | the underlying Code id | → UCUM m / UCUM [ft_i] / NCIt C49488 / C49487 |
-| `instanceType` | the class name | ResponseCode |
-
+<summary><b>response_code</b> &nbsp;&middot;&nbsp; ResponseCode &nbsp;&middot;&nbsp; <i>7 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>BRC-METER / BRC-FOOT / BRC-YES / BRC-NO</td></tr>
+<tr><td><code>name</code></td><td>display label</td><td>meter / foot / Yes / No</td></tr>
+<tr><td><code>isEnabled</code></td><td>is this option active?</td><td>true</td></tr>
+<tr><td><code>code</code></td><td>the underlying Code id</td><td>→ UCUM m / UCUM [ft_i] / NCIt C49488 / C49487</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>ResponseCode</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>code</b> &nbsp;·&nbsp; Code &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | CD-LP35-9 (example) |
-| `code` | the code value | 64098-7 |
-| `codeSystem` | the source system | LOINC |
-| `codeSystemVersion` | system version | 2.77 |
-| `decode` | human-readable meaning | 6 minute walk test (distance) |
-| `instanceType` | the class name | Code |
-
+<summary><b>code</b> &nbsp;&middot;&nbsp; Code &nbsp;&middot;&nbsp; <i>7 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>CD-LP35-9 (example)</td></tr>
+<tr><td><code>code</code></td><td>the code value</td><td>64098-7</td></tr>
+<tr><td><code>codeSystem</code></td><td>the source system</td><td>LOINC</td></tr>
+<tr><td><code>codeSystemVersion</code></td><td>system version</td><td>2.77</td></tr>
+<tr><td><code>decode</code></td><td>human-readable meaning</td><td>6 minute walk test (distance)</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>Code</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>alias_code</b> &nbsp;·&nbsp; AliasCode &nbsp;·&nbsp; <i>5 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | AC-6MWT-NCI |
-| `standardCode` | the primary Code id | → LOINC 64098-7 |
-| `standardCodeAliases` | equivalent Code ids | [→ NCIt C100129 alias] |
-| `instanceType` | the class name | AliasCode |
-
+<summary><b>alias_code</b> &nbsp;&middot;&nbsp; AliasCode &nbsp;&middot;&nbsp; <i>5 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>AC-6MWT-NCI</td></tr>
+<tr><td><code>standardCode</code></td><td>the primary Code id</td><td>→ LOINC 64098-7</td></tr>
+<tr><td><code>standardCodeAliases</code></td><td>equivalent Code ids</td><td>[→ NCIt C100129 alias]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>AliasCode</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>activity</b> &nbsp;·&nbsp; Activity &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | ACT-6MWT |
-| `name` | activity name | 6-Minute Walk Test |
-| `biomedicalConceptIds` | BC ids measured here | [BC-6MWT] |
-| `bcCategoryIds` | BC category ids | [BCC-QRS] |
-| `timelineId` | the timeline it sits on | ST-MAIN |
-| `instanceType` | the class name | Activity |
-
+<summary><b>activity</b> &nbsp;&middot;&nbsp; Activity &nbsp;&middot;&nbsp; <i>15 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>ACT-6MWT</td></tr>
+<tr><td><code>name</code></td><td>activity name</td><td>6-Minute Walk Test</td></tr>
+<tr><td><code>biomedicalConceptIds</code></td><td>BC ids measured here</td><td>[BC-6MWT]</td></tr>
+<tr><td><code>bcCategoryIds</code></td><td>BC category ids</td><td>[BCC-QRS]</td></tr>
+<tr><td><code>timelineId</code></td><td>the timeline it sits on</td><td>ST-MAIN</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>Activity</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>schedule_timeline</b> &nbsp;·&nbsp; ScheduleTimeline &nbsp;·&nbsp; <i>13 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | ST-MAIN |
-| `name` | timeline name | Main Timeline |
-| `mainTimeline` | is this the primary timeline? | true |
-| `entryId` | first instance id | SAI-V1 |
-| `instances` | ordered SAI ids | [SAI-V1, SAI-V2, SAI-V3] |
-| `instanceType` | the class name | ScheduleTimeline |
-
+<summary><b>schedule_timeline</b> &nbsp;&middot;&nbsp; ScheduleTimeline &nbsp;&middot;&nbsp; <i>13 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>ST-MAIN</td></tr>
+<tr><td><code>name</code></td><td>timeline name</td><td>Main Timeline</td></tr>
+<tr><td><code>mainTimeline</code></td><td>is this the primary timeline?</td><td>true</td></tr>
+<tr><td><code>entryId</code></td><td>first instance id</td><td>SAI-V1</td></tr>
+<tr><td><code>instances</code></td><td>ordered SAI ids</td><td>[SAI-V1, SAI-V2, SAI-V3]</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>ScheduleTimeline</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>scheduled_activity_instance</b> &nbsp;·&nbsp; ScheduledActivityInstance &nbsp;·&nbsp; <i>12 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | SAI-V1 / SAI-V2 / SAI-V3 |
-| `activityIds` | activities performed here | [ACT-6MWT] |
-| `encounterId` | the visit it happens at | ENC-V1 / ENC-V2 / ENC-V3 |
-| `epochId` | the epoch it falls in | EPO-TRT |
-| `timelineId` | its timeline | ST-MAIN |
-| `instanceType` | the class name | ScheduledActivityInstance |
-
+<summary><b>scheduled_activity_instance</b> &nbsp;&middot;&nbsp; ScheduledActivityInstance &nbsp;&middot;&nbsp; <i>12 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>SAI-V1 / SAI-V2 / SAI-V3</td></tr>
+<tr><td><code>activityIds</code></td><td>activities performed here</td><td>[ACT-6MWT]</td></tr>
+<tr><td><code>encounterId</code></td><td>the visit it happens at</td><td>ENC-V1 / ENC-V2 / ENC-V3</td></tr>
+<tr><td><code>epochId</code></td><td>the epoch it falls in</td><td>EPO-TRT</td></tr>
+<tr><td><code>timelineId</code></td><td>its timeline</td><td>ST-MAIN</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>ScheduledActivityInstance</td></tr>
+</tbody>
+</table>
 </details>
 
 <details>
-<summary><b>timing</b> &nbsp;·&nbsp; Timing &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
-
-
-| Attribute | Holds | Our 6MWT value |
-|-----------|-------|----------------|
-| `id` | string identifier | TIM-V1 / TIM-V2 / TIM-V3 |
-| `type` | timing type (Code) | Fixed Reference |
-| `value` | ISO-8601 offset | P0D |
-| `valueLabel` | human-readable timing | Day 1 of the visit |
-| `relativeToFrom` | anchor point | Start to start |
-| `instanceType` | the class name | Timing |
-
+<summary><b>timing</b> &nbsp;&middot;&nbsp; Timing &nbsp;&middot;&nbsp; <i>15 attributes in full</i></summary>
+<table>
+<thead><tr><th>Attribute</th><th>Holds</th><th>Our 6MWT value</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>string identifier</td><td>TIM-V1 / TIM-V2 / TIM-V3</td></tr>
+<tr><td><code>type</code></td><td>timing type (Code)</td><td>Fixed Reference</td></tr>
+<tr><td><code>value</code></td><td>ISO-8601 offset</td><td>P0D</td></tr>
+<tr><td><code>valueLabel</code></td><td>human-readable timing</td><td>Day 1 of the visit</td></tr>
+<tr><td><code>relativeToFrom</code></td><td>anchor point</td><td>Start to start</td></tr>
+<tr><td><code>instanceType</code></td><td>the class name</td><td>Timing</td></tr>
+</tbody>
+</table>
 </details>
 
 
