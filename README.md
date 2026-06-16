@@ -10,7 +10,7 @@
 
 Most data managers have heard the acronym **USDM** (the CDISC Unified Study Definitions Model). Few have seen it land on a *real* assessment.
 
-So this walk takes **one** assessment — a 6-Minute Walk Test (6MWT), performed at three visits — and follows it all the way down: from a single sentence in a protocol to the actual USDM v4 classes, columns, and IDs that hold it.
+So this walk takes **one** assessment — a 6-Minute Walk Test (6MWT), performed at three visits on Day 1 of each visit— and follows it all the way down: from a single sentence in a protocol to the actual USDM v4 classes, columns, and IDs that hold it.
 
 No abstraction. Just the tables, the column names, and where each one points.
 
