@@ -383,6 +383,6 @@ Below, each class is expandable. For every class you'll see its key attributes (
 
 ---
 
-*Tamer Chowdhury · Chair, ACDM Data Management Technology Expert Group (DMTEG)*
+*Tamer Chowdhury*
 
 *Walk one assessment. Map it once. Automate everything downstream.*
