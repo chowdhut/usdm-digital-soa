@@ -2,7 +2,7 @@
 
 ### Digital SoA, mapped end to end. One assessment — the 6-Minute Walk Test — traced from a sentence in the protocol to the sixteen USDM v4 tables that make a protocol machine-readable.
 
-
+*An ACDM Data Management Technology Expert Group (DMTEG) learning resource.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 Most data managers have heard the acronym **USDM** (the CDISC Unified Study Definitions Model). Few have seen it land on a *real* assessment.
 
-So this walk takes **one** assessment — a 6-Minute Walk Test (6MWT), performed at three visits on Day 1 of each visit— and follows it all the way down: from a single sentence in a protocol to the actual USDM v4 classes, columns, and IDs that hold it.
+So this walk takes **one** assessment — a 6-Minute Walk Test (6MWT), performed at three visits — and follows it all the way down: from a single sentence in a protocol to the actual USDM v4 classes, columns, and IDs that hold it.
 
 No abstraction. Just the tables, the column names, and where each one points.
 
@@ -130,6 +130,245 @@ SDTM domains (QS, VS, FA, …) · CDASH eCRF conventions · ADaM analysis-ready 
 
 ---
 
+## Appendix — the sixteen classes, attribute by attribute
+
+Below, each class is expandable. For every class you'll see its key attributes (exact USDM v4 names), what each one holds, and the value it carries in our 6MWT example. `*Id` / `*Ids` attributes are foreign keys into another sheet. Each class has additional attributes in the full USDM v4 model — see the [interactive class browser](https://ankonyeni.github.io/usdm-v4-docs/diagram-viewer/) for the complete list.
+
+<details>
+<summary><b>study</b> &nbsp;·&nbsp; Study &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | STD-1111-0000 |
+| `name` | short study name | Study 1111_0000 |
+| `versions` | child StudyVersion ids | [SV-1111-0000-1] |
+| `instanceType` | the class name | Study |
+
+</details>
+
+<details>
+<summary><b>study_version</b> &nbsp;·&nbsp; StudyVersion &nbsp;·&nbsp; <i>28 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | SV-1111-0000-1 |
+| `versionIdentifier` | version label | 1 |
+| `rationale` | why this version exists | Original protocol |
+| `studyDesigns` | child StudyDesign ids | [SD-1111-0000] |
+| `amendments` | child StudyAmendment ids | [AMD-0] |
+| `biomedicalConcepts` | BC ids defined for the study | [BC-6MWT] |
+| `bcCategories` | BC category ids | [BCC-QRS] |
+| `instanceType` | the class name | StudyVersion |
+
+</details>
+
+<details>
+<summary><b>study_amendment</b> &nbsp;·&nbsp; StudyAmendment &nbsp;·&nbsp; <i>17 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | AMD-0 |
+| `number` | amendment number | 0 |
+| `summary` | plain-language summary | Original protocol — no changes |
+| `instanceType` | the class name | StudyAmendment |
+
+</details>
+
+<details>
+<summary><b>study_design</b> &nbsp;·&nbsp; StudyDesign &nbsp;·&nbsp; <i>28 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | SD-1111-0000 |
+| `name` | design name | Main Study Design |
+| `epochs` | child StudyEpoch ids | [EPO-TRT] |
+| `encounters` | child Encounter ids | [ENC-V1, ENC-V2, ENC-V3] |
+| `activities` | child Activity ids | [ACT-6MWT] |
+| `scheduleTimelines` | child ScheduleTimeline ids | [ST-MAIN] |
+| `instanceType` | the class name | StudyDesign |
+
+</details>
+
+<details>
+<summary><b>study_epoch</b> &nbsp;·&nbsp; StudyEpoch &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | EPO-TRT |
+| `name` | epoch name | Treatment |
+| `type` | epoch type (Code) | C-TREATMENT-EPOCH |
+| `instanceType` | the class name | StudyEpoch |
+
+</details>
+
+<details>
+<summary><b>encounter</b> &nbsp;·&nbsp; Encounter &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | ENC-V1  /  ENC-V2  /  ENC-V3 |
+| `name` | visit name | Visit 1  /  Visit 2  /  Visit 3 |
+| `type` | encounter type (Code) | C-SITE-VISIT |
+| `previousId / nextId` | order in the visit chain | links V1 → V2 → V3 |
+| `instanceType` | the class name | Encounter |
+
+</details>
+
+<details>
+<summary><b>biomedical_concept_category</b> &nbsp;·&nbsp; BiomedicalConceptCategory &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | BCC-QRS |
+| `name` | category name | Questionnaires, Ratings & Scales |
+| `code` | the category's Code id | → CDISC C100129 |
+| `memberIds` | BC ids that belong to it | [BC-6MWT] |
+| `instanceType` | the class name | BiomedicalConceptCategory |
+
+</details>
+
+<details>
+<summary><b>biomedical_concept</b> &nbsp;·&nbsp; BiomedicalConcept &nbsp;·&nbsp; <i>10 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | BC-6MWT |
+| `name` | concept name | 6-Minute Walk Test |
+| `reference` | the anchoring code id | → LOINC 64098-7 |
+| `properties` | child BiomedicalConceptProperty ids | [BCP-DIST, BCP-UNIT, BCP-DATE, BCP-PERF] |
+| `code` | the concept's Code id | → CD-LP35-9 |
+| `instanceType` | the class name | BiomedicalConcept |
+
+</details>
+
+<details>
+<summary><b>biomedical_concept_property</b> &nbsp;·&nbsp; BiomedicalConceptProperty &nbsp;·&nbsp; <i>11 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | BCP-DIST / BCP-UNIT / BCP-DATE / BCP-PERF |
+| `name` | what is recorded | Distance / Unit / Assessment Date / Performed? |
+| `datatype` | the value's type | decimal / code / date / code |
+| `responseCodes` | permitted ResponseCode ids | DIST: — · UNIT: [BRC-METER, BRC-FOOT] · DATE: — · PERF: [BRC-YES, BRC-NO] |
+| `isRequired` | must it be collected? | true (DIST, DATE, PERF) |
+| `instanceType` | the class name | BiomedicalConceptProperty |
+
+</details>
+
+<details>
+<summary><b>response_code</b> &nbsp;·&nbsp; ResponseCode &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | BRC-METER / BRC-FOOT / BRC-YES / BRC-NO |
+| `name` | display label | meter / foot / Yes / No |
+| `isEnabled` | is this option active? | true |
+| `code` | the underlying Code id | → UCUM m / UCUM [ft_i] / NCIt C49488 / C49487 |
+| `instanceType` | the class name | ResponseCode |
+
+</details>
+
+<details>
+<summary><b>code</b> &nbsp;·&nbsp; Code &nbsp;·&nbsp; <i>7 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | CD-LP35-9 (example) |
+| `code` | the code value | 64098-7 |
+| `codeSystem` | the source system | LOINC |
+| `codeSystemVersion` | system version | 2.77 |
+| `decode` | human-readable meaning | 6 minute walk test (distance) |
+| `instanceType` | the class name | Code |
+
+</details>
+
+<details>
+<summary><b>alias_code</b> &nbsp;·&nbsp; AliasCode &nbsp;·&nbsp; <i>5 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | AC-6MWT-NCI |
+| `standardCode` | the primary Code id | → LOINC 64098-7 |
+| `standardCodeAliases` | equivalent Code ids | [→ NCIt C100129 alias] |
+| `instanceType` | the class name | AliasCode |
+
+</details>
+
+<details>
+<summary><b>activity</b> &nbsp;·&nbsp; Activity &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | ACT-6MWT |
+| `name` | activity name | 6-Minute Walk Test |
+| `biomedicalConceptIds` | BC ids measured here | [BC-6MWT] |
+| `bcCategoryIds` | BC category ids | [BCC-QRS] |
+| `timelineId` | the timeline it sits on | ST-MAIN |
+| `instanceType` | the class name | Activity |
+
+</details>
+
+<details>
+<summary><b>schedule_timeline</b> &nbsp;·&nbsp; ScheduleTimeline &nbsp;·&nbsp; <i>13 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | ST-MAIN |
+| `name` | timeline name | Main Timeline |
+| `mainTimeline` | is this the primary timeline? | true |
+| `entryId` | first instance id | SAI-V1 |
+| `instances` | ordered SAI ids | [SAI-V1, SAI-V2, SAI-V3] |
+| `instanceType` | the class name | ScheduleTimeline |
+
+</details>
+
+<details>
+<summary><b>scheduled_activity_instance</b> &nbsp;·&nbsp; ScheduledActivityInstance &nbsp;·&nbsp; <i>12 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | SAI-V1 / SAI-V2 / SAI-V3 |
+| `activityIds` | activities performed here | [ACT-6MWT] |
+| `encounterId` | the visit it happens at | ENC-V1 / ENC-V2 / ENC-V3 |
+| `epochId` | the epoch it falls in | EPO-TRT |
+| `timelineId` | its timeline | ST-MAIN |
+| `instanceType` | the class name | ScheduledActivityInstance |
+
+</details>
+
+<details>
+<summary><b>timing</b> &nbsp;·&nbsp; Timing &nbsp;·&nbsp; <i>15 attributes in full</i></summary>
+
+
+| Attribute | Holds | Our 6MWT value |
+|-----------|-------|----------------|
+| `id` | string identifier | TIM-V1 / TIM-V2 / TIM-V3 |
+| `type` | timing type (Code) | Fixed Reference |
+| `value` | ISO-8601 offset | P0D |
+| `valueLabel` | human-readable timing | Day 1 of the visit |
+| `relativeToFrom` | anchor point | Start to start |
+| `instanceType` | the class name | Timing |
+
+</details>
+
+
+---
+
 ## Resources
 
 - **USDM v4 interactive class browser** (by Ankon Yeni): https://ankonyeni.github.io/usdm-v4-docs/diagram-viewer/ — best companion for "what does this class actually contain?"
@@ -146,6 +385,6 @@ SDTM domains (QS, VS, FA, …) · CDASH eCRF conventions · ADaM analysis-ready 
 
 ---
 
-*Tamer Chowdhury*
+*Tamer Chowdhury · Chair, ACDM Data Management Technology Expert Group (DMTEG)*
 
 *Walk one assessment. Map it once. Automate everything downstream.*
