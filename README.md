@@ -2,8 +2,6 @@
 
 ### Digital SoA, mapped end to end. One assessment — the 6-Minute Walk Test — traced from a sentence in the protocol to the sixteen USDM v4 tables that make a protocol machine-readable.
 
-*An ACDM Data Management Technology Expert Group (DMTEG) learning resource.*
-
 ---
 
 ## What this is
